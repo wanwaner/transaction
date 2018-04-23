@@ -1,0 +1,74 @@
+# =============
+# Mybatis 配置
+# =============
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+spring:
+  # =======================
+  # Spring-Datasource 配置
+  # =======================
+  datasource:
+    url: jdbc:mysql://118.190.42.136:3306/order?allowMultiQueries=true
+    username: msg
+    password: msg
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # =======================
+    # Druid-Pool 配置
+    # =======================
+    druid:
+      initialSize: 5
+      maxActive: 20
+      minIdle: 5
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1 from dual
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=1000;druid.stat.logSlowSql=true
+      useGlobalDataSourceStat: true
+
+  # ====================
+  # Spring-JMX 配置
+  # ====================
+  jmx:
+    enabled: false
+
+# ===========
+# Dubbo 配置
+# ===========
+dubbo:
+  application:
+    name: order-service
+    logger: slf4j
+  registry:
+    address: zookeeper://118.190.42.136:2181
+  protocol:
+    name: dubbo
+    port: 20901
+    threads: 200
+    payload: 88388608
+  service-config:
+    version: 1.0.0
+    group: dev
+    timeout: 10000
+    retries: 0
+  reference-config:
+    version: 1.0.0
+    group: dev
+    timeout: 10000
+    retries: 0
+    check: false
+
+# =========================
+# Web容器(默认为tomcat) 配置
+# =========================
+server:
+  port: 9091
+  tomcat:
+    uri-encoding: UTF-8

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.camelot.transaction.redpackage.service.mapper.RedPackageMapper">
+
+  <!-- record -->
+  <insert id="record"
+    parameterType="com.camelot.transaction.redpackage.api.dto.RedPackageDto">
+    INSERT INTO t_redpackage (
+      id,
+      red_packet_pay_amount
+    ) VALUES (
+      #{id}
+      , #{redPacketPayAmount}
+    )
+  </insert>
+
+  <insert id="logMsg">
+    INSERT INTO log_msg (
+      msg_id
+    ) VALUES (
+      #{msgId}
+    )
+  </insert>
+
+  <select id="queryLogCount" resultType="int">
+    SELECT count(1)
+    FROM log_msg
+    WHERE msg_id = #{msgId}
+  </select>
+
+</mapper>

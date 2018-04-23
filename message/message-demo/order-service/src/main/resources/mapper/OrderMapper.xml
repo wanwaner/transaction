@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.camelot.transaction.order.service.mapper.OrderMapper">
+
+  <!-- 创建订单 -->
+  <insert id="createOrder"
+    parameterType="com.camelot.transaction.order.api.dto.OrderDto">
+    INSERT INTO t_order (
+      id,
+      red_packet_pay_amount,
+      capital_pay_amount
+    ) VALUES (
+      #{id}
+      , #{redPacketPayAmount}
+      , #{capitalPayAmount}
+    )
+  </insert>
+
+  <!-- 记录日志 -->
+  <insert id="logBiz">
+    INSERT INTO log_biz (
+      message_id
+      , biz_id
+    ) VALUES (
+      #{msgId}
+      , #{bizId}
+    )
+  </insert>
+
+  <!-- 查询业务是否完成 -->
+  <select id="queryMessageCount" resultType="int">
+    SELECT count(1)
+    FROM log_biz
+    WHERE message_id = #{msgId}
+  </select>
+
+</mapper>

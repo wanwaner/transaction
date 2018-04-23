@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.camelot.transaction</groupId>
+  <artifactId>transaction</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <!-- 项目模块 -->
+  <modules>
+    <module>common</module>
+    <module>jdbc</module>
+    <module>jta</module>
+    <module>message</module>
+  </modules>
+
+  <!-- 项目信息 -->
+  <name>Distributed Transaction</name>
+  <description>
+    柯莱特分布式事务培训项目
+  </description>
+  <inceptionYear>2017-2027</inceptionYear>
+  <organization>
+    <name>柯莱特青岛交付部</name>
+    <url>http://www.camelotchina.com</url>
+  </organization>
+
+  <!-- 继承依赖 -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.6.RELEASE</version>
+    <relativePath/>
+  </parent>
+
+  <!-- 定义常量 -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <guava.version>22.0</guava.version>
+    <commons-lang3.version>3.6</commons-lang3.version>
+    <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
+    <springboot-mybaits.version>1.3.0</springboot-mybaits.version>
+    <druid.version>1.1.2</druid.version>
+    <rocketmq.version>4.1.0-incubating</rocketmq.version>
+    <lts.version>1.7.0</lts.version>
+    <netty.version>4.1.14.Final</netty.version>
+    <mapdb.version>2.0-beta10</mapdb.version>
+    <dubbo.version>2.5.3</dubbo.version>
+    <zkclient.version>0.10</zkclient.version>
+    <zookeeper.version>3.4.10</zookeeper.version>
+    <fastjson.version>1.2.35</fastjson.version>
+  </properties>
+
+  <!-- 声明依赖,不引入 -->
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- pbcs自依赖 -->
+      <dependency>
+        <groupId>com.camelot.transaction</groupId>
+        <artifactId>common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.camelot.transaction</groupId>
+        <artifactId>message-core-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.camelot.transaction</groupId>
+        <artifactId>order-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.camelot.transaction</groupId>
+        <artifactId>redpackage-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- mysql -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector-java.version}</version>
+      </dependency>
+      <!-- mybatis -->
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${springboot-mybaits.version}</version>
+      </dependency>
+      <!-- druid -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+      <!-- rocketmq -->
+      <dependency>
+        <groupId>org.apache.rocketmq</groupId>
+        <artifactId>rocketmq-common</artifactId>
+        <version>${rocketmq.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.rocketmq</groupId>
+        <artifactId>rocketmq-client</artifactId>
+        <version>${rocketmq.version}</version>
+      </dependency>
+
+      <!-- lts -->
+      <dependency>
+        <groupId>com.github.ltsopensource</groupId>
+        <artifactId>lts-tasktracker</artifactId>
+        <version>${lts.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.ltsopensource</groupId>
+        <artifactId>lts-jobclient</artifactId>
+        <version>${lts.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.ltsopensource</groupId>
+        <artifactId>lts-spring</artifactId>
+        <version>${lts.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.sgroschupf</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mapdb</groupId>
+        <artifactId>mapdb</artifactId>
+        <version>${mapdb.version}</version>
+      </dependency>
+
+      <!-- dubbo -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>spring</artifactId>
+            <groupId>org.springframework</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>${zookeeper.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>com.101tec</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>${zkclient.version}</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>slf4j-api</artifactId>
+            <groupId>org.slf4j</groupId>
+          </exclusion>
+          <exclusion>
+            <artifactId>log4j</artifactId>
+            <groupId>log4j</groupId>
+          </exclusion>
+          <exclusion>
+            <artifactId>slf4j-log4j12</artifactId>
+            <groupId>org.slf4j</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <!-- 每个模块都继承引入 -->
+  <dependencies>
+    <!-- lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <!-- guava -->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>${guava.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${commons-lang3.version}</version>
+    </dependency>
+    <!-- fastjson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>${fastjson.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

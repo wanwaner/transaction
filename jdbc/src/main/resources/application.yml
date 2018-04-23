@@ -1,0 +1,9 @@
+spring:
+  # =======================
+  # Spring-Datasource 配置
+  # =======================
+  datasource:
+    url: jdbc:mysql://rm-m5ep32wd981a5mla9o.mysql.rds.aliyuncs.com:3306/jdbc?zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: dt
+    password: Haier@123
+    driver-class-name: com.mysql.cj.jdbc.Driver

@@ -1,0 +1,45 @@
+spring:
+  # =============================
+  # Spring-Non_XA_Datasource 配置
+  # =============================
+  datasource:
+    alipay:
+      url: jdbc:mysql://rm-m5ep32wd981a5mla9o.mysql.rds.aliyuncs.com:3306/alipay
+      username: alipay
+      password: Haier@123
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    yuebao:
+      url: jdbc:mysql://rm-m5ep32wd981a5mla9o.mysql.rds.aliyuncs.com:3306/yuebao
+      username: yuebao
+      password: Haier@123
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # =============================
+  # Spring-XA_Datasource 配置
+  # =============================
+  jta:
+    enabled: true
+    atomikos:
+      datasource:
+        alipay:
+          xa-properties:
+            url: jdbc:mysql://rm-m5ep32wd981a5mla9o.mysql.rds.aliyuncs.com:3306/alipay
+            user: alipay
+            password: Haier@123
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          unique-resource-name: alipay
+          max-pool-size: 25
+          min-pool-size: 3
+          max-lifetime: 20000
+          borrow-connection-timeout: 10000
+        yuebao:
+          xa-properties:
+            url: jdbc:mysql://rm-m5ep32wd981a5mla9o.mysql.rds.aliyuncs.com:3306/yuebao
+            user: yuebao
+            password: Haier@123
+          xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
+          unique-resource-name: yuebao
+          max-pool-size: 25
+          min-pool-size: 3
+          max-lifetime: 20000
+          borrow-connection-timeout: 10000
