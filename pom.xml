@@ -50,7 +50,7 @@
     <lts.version>1.7.0</lts.version>
     <netty.version>4.1.14.Final</netty.version>
     <mapdb.version>2.0-beta10</mapdb.version>
-    <dubbo.version>2.5.3</dubbo.version>
+    <dubbo.version>2.6.9</dubbo.version>
     <zkclient.version>0.10</zkclient.version>
     <zookeeper.version>3.6.1</zookeeper.version>
     <fastjson.version>1.2.35</fastjson.version>
